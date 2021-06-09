@@ -416,7 +416,7 @@ func (h HTTPHandler) ServeHTTP(rw http.ResponseWriter, r *http.Request) {
 	log.Printf("Serving [%s] request from [%s] to path [%s] (%d bytes)",
 		r.Method, r.RemoteAddr, r.URL.Path, r.ContentLength)
 
-	if r.Method == "GET" && r.URL.Path == "/stream" {
+	if (r.Method == "GET" && (r.URL.Path == "/stream" || r.URL.Path == "/videostream.cgi")) {
 		h.streamRequest(rw, r)
 		return
 	}
